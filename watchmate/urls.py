@@ -4,4 +4,5 @@ from django.urls import path, include
 urlpatterns = [
     path('dashboard/', admin.site.urls),
     path('api/watchmate/', include('content_app.api.urls')),
+    path('account/', include('user_app.api.urls')),
 ]
