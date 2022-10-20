@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from content_app.models import Content, StreamPlatform, Review
+
+from content_app.models import Content, Review, StreamPlatform
 
 
 class ReviewSerializer(serializers.ModelSerializer):
@@ -7,12 +8,12 @@ class ReviewSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Review
-        exclude = ('content',)
+        exclude = ("content",)
         # fields = "__all__"
 
 
 class ContentSerializer(serializers.ModelSerializer):
-    platform = serializers.CharField(source='platform.name')
+    platform = serializers.CharField(source="platform.name")
 
     class Meta:
         model = Content
