@@ -6,7 +6,7 @@ readme = "README.md"
 homepage = "https://github.com/paulrousset/imdb-clone-django-rest"
 repository = "https://github.com/paulrousset/imdb-clone-django-rest"
 description = "IMDB API clone using django REST framework"
-keywords = "imdb-clone"
+keywords = ["imdb-clone"]
 authors = ["Paul <paulrousset@hotmail.fr>"]
 
 [tool.poetry.dependencies]
