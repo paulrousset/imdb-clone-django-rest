@@ -4,7 +4,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework import status
 
 from user_app.api.serializers import RegistrationSerializer
-# from user_app import models
+from user_app import models
 
 
 @api_view(['POST', ])
@@ -28,8 +28,8 @@ def registration_view(request):
             data['username'] = account.username
             data['email'] = account.email
 
-            token = Token.objects.get_or_create(user=account).key
-            data['token'] = token
+            token, created = Token.objects.get_or_create(user=account)
+            data['token'] = token.key
 
         else:
             data = serializer.errors

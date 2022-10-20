@@ -7,10 +7,11 @@ router = DefaultRouter()
 router.register('stream', views.StreamPlatformVS, basename='streamplatform')
 
 urlpatterns = [
-    path('', include(router.urls)),
 
     path('', views.ContentListAV.as_view(), name='content-list'),
     path('<int:pk>/', views.ContentDetailAV.as_view(), name='content-detail'),
+
+    path('', include(router.urls)),
 
     path('<int:pk>/reviews/create/', views.ReviewCreate.as_view(), name='review-create'),
     path('<int:pk>/reviews/', views.ReviewList.as_view(), name='review-list'),

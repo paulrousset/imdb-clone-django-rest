@@ -3,13 +3,15 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.throttling import AnonRateThrottle, ScopedRateThrottle, UserRateThrottle
 
-from content_app.api import serializers, permissions
+from content_app.api import serializers, permissions, throttling
 from content_app.models import Content, StreamPlatform, Review
 
 
 class ContentListAV(APIView):
     permission_classes = [permissions.IsAdminOrReadOnly]
+    throttle_classes = [AnonRateThrottle]
 
     def get(self, request):
         contents = Content.objects.all()
@@ -27,6 +29,7 @@ class ContentListAV(APIView):
 
 class ContentDetailAV(APIView):
     permission_classes = [permissions.IsAdminOrReadOnly]
+    throttle_classes = [AnonRateThrottle]
 
     def get(self, request, pk):
         try:
@@ -56,10 +59,12 @@ class StreamPlatformVS(viewsets.ModelViewSet):
     queryset = StreamPlatform.objects.all()
     serializer_class = serializers.StreamPlatformSerializer
     permission_classes = [permissions.IsAdminOrReadOnly]
+    throttle_classes = [AnonRateThrottle]
 
 
 class ReviewList(generics.ListAPIView):
     serializer_class = serializers.ReviewSerializer
+    throttle_classes = [throttling.ReviewListThrottle, AnonRateThrottle]
 
     def get_queryset(self):
         pk = self.kwargs['pk']
@@ -70,11 +75,14 @@ class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Review.objects.all()
     serializer_class = serializers.ReviewSerializer
     permission_classes = [permissions.IsReviewUserOrReadOnly]
+    throttle_classes = [ScopedRateThrottle, AnonRateThrottle]
+    throttle_scope = 'review-detail'
 
 
 class ReviewCreate(generics.CreateAPIView):
     serializer_class = serializers.ReviewSerializer
     permission_classes = [IsAuthenticated]
+    throttle_classes = [throttling.ReviewCreateThrottle]
 
     def get_queryset(self):
         return Review.objects.all()
