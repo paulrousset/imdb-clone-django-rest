@@ -1,13 +1,15 @@
 from rest_framework import status, viewsets, generics
 from rest_framework.exceptions import ValidationError
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from content_app.api import serializers
+from content_app.api import serializers, permissions
 from content_app.models import Content, StreamPlatform, Review
 
 
 class ContentListAV(APIView):
+    permission_classes = [permissions.IsAdminOrReadOnly]
 
     def get(self, request):
         contents = Content.objects.all()
@@ -24,6 +26,7 @@ class ContentListAV(APIView):
 
 
 class ContentDetailAV(APIView):
+    permission_classes = [permissions.IsAdminOrReadOnly]
 
     def get(self, request, pk):
         try:
@@ -52,6 +55,7 @@ class ContentDetailAV(APIView):
 class StreamPlatformVS(viewsets.ModelViewSet):
     queryset = StreamPlatform.objects.all()
     serializer_class = serializers.StreamPlatformSerializer
+    permission_classes = [permissions.IsAdminOrReadOnly]
 
 
 class ReviewList(generics.ListAPIView):
@@ -65,10 +69,12 @@ class ReviewList(generics.ListAPIView):
 class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Review.objects.all()
     serializer_class = serializers.ReviewSerializer
+    permission_classes = [permissions.IsReviewUserOrReadOnly]
 
 
 class ReviewCreate(generics.CreateAPIView):
     serializer_class = serializers.ReviewSerializer
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         return Review.objects.all()
