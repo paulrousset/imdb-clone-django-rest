@@ -31,9 +31,9 @@ IMDB Clone API built with Django Rest Framework
 
 **5. Reviews**
 
-- Create Review For Specific Movie: [http://127.0.0.1:8000/api/watchmate/**_int:movie_id_**/reviews/create/](http://127.0.0.1:8000/api/watchmate/<int:movie_id>/reviews/create/)
-- List Of All Reviews For Specific Movie: [http://127.0.0.1:8000/api/watchmate/**_int:movie_id_**/reviews/](http://127.0.0.1:8000/api/watchmate/<int:movie_id>/reviews/)
-- Access, Update & Destroy Individual Review: [http://127.0.0.1:8000/api/watchmate/reviews/**_int:review_id_**/ ](http://127.0.0.1:8000/api/watchmate/reviews/<int:review_id>/)
+- Create Review For Specific Movie: [http://127.0.0.1:8000/api/watchmate/**_*int:movie_id*_**/reviews/create/](http://127.0.0.1:8000/api/watchmate/int:movie_id/reviews/create/)
+- List Of All Reviews For Specific Movie: [http://127.0.0.1:8000/api/watchmate/**_*int:movie_id*_**/reviews/](http://127.0.0.1:8000/api/watchmate/int:movie_id/reviews/)
+- Access, Update & Destroy Individual Review: [http://127.0.0.1:8000/api/watchmate/reviews/**_int:review_id_**/ ](http://127.0.0.1:8000/api/watchmate/reviews/int:review_id/)
 
 **6. User Review**
 
