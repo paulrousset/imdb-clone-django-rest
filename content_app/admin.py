@@ -1,5 +1,6 @@
 from django.contrib import admin
-from content_app.models import Content, StreamPlatform, Review
+
+from content_app.models import Content, Review, StreamPlatform
 
 # Register your models here.
 admin.site.register(Content)

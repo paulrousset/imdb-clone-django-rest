@@ -1,22 +1,33 @@
+from rest_framework import status
+from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from rest_framework.authtoken.models import Token
-from rest_framework import status
 
-from user_app.api.serializers import RegistrationSerializer
 from user_app import models
+from user_app.api.serializers import RegistrationSerializer
+
+# untrigger flake8
+FLAKE8_VAR = models.FLAKE8_VAR
 
 
-@api_view(['POST', ])
+@api_view(
+    [
+        "POST",
+    ]
+)
 def logout_view(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         request.user.auth_token.delete()
         return Response(status=status.HTTP_200_OK)
 
 
-@api_view(['POST', ])
+@api_view(
+    [
+        "POST",
+    ]
+)
 def registration_view(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         serializer = RegistrationSerializer(data=request.data)
 
         data = {}
@@ -24,12 +35,12 @@ def registration_view(request):
         if serializer.is_valid():
             account = serializer.save()
 
-            data['response'] = "Registration Successful!"
-            data['username'] = account.username
-            data['email'] = account.email
+            data["response"] = "Registration Successful!"
+            data["username"] = account.username
+            data["email"] = account.email
 
             token = Token.objects.get(user=account).key
-            data['token'] = token
+            data["token"] = token
 
         else:
             data = serializer.errors
