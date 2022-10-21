@@ -10,7 +10,7 @@ IMDB Clone API built with Django Rest Framework
 
 
 
-## 🔗 Endpoints 
+## 🔗 Links 
   
 
 **1. Admin Access**
