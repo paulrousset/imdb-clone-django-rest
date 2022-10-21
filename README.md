@@ -5,12 +5,12 @@ IMDB Clone API built with Django Rest Framework
 - Admin users can create and edit list of streaming platforms and related contents (movies, series, anime)
 - Users can access the list of contents and create / edit  related reviews
 
-## 🔗  Setup
+## :wrench:  Setup
 
 
 
 
-## 🔗  Endpoints 
+## 🔗 Endpoints 
   
 
 **1. Admin Access**
@@ -43,9 +43,9 @@ IMDB Clone API built with Django Rest Framework
 
 **5. Reviews**
 
--   Create Review For Specific Movie:   [http://127.0.0.1:8000/api/watchmate/<int:movie_id>/reviews/create/](http://127.0.0.1:8000/api/watchmate/<int:movie_id>/reviews/create/)
--   List Of All Reviews For Specific Movie:  [http://127.0.0.1:8000/api/watchmate/<int:movie_id>/reviews/](http://127.0.0.1:8000/api/watchmate/<int:movie_id>/reviews/)
--   Access, Update & Destroy Individual Review:  [http://127.0.0.1:8000/api/watchmate/reviews/<int:review_id>/ ](http://127.0.0.1:8000/api/watchmate/reviews/<int:review_id>/ )
+-   Create Review For Specific Movie:   [http://127.0.0.1:8000/api/watchmate/***int:movie_id***/reviews/create/](http://127.0.0.1:8000/api/watchmate/<int:movie_id>/reviews/create/)
+-   List Of All Reviews For Specific Movie:  [http://127.0.0.1:8000/api/watchmate/***int:movie_id***/reviews/](http://127.0.0.1:8000/api/watchmate/<int:movie_id>/reviews/)
+-   Access, Update & Destroy Individual Review:  [http://127.0.0.1:8000/api/watchmate/reviews/***int:review_id***/ ](http://127.0.0.1:8000/api/watchmate/reviews/<int:review_id>/ )
 
   
 
