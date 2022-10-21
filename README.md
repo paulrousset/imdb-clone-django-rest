@@ -29,12 +29,12 @@ IMDB Clone API built with Django Rest Framework
 **3. Stream Platforms**
 
 - Create Element & Access List: [http://127.0.0.1:8000/api/watchmate/stream/](http://127.0.0.1:8000/api/watchmate/stream/)
-- Access, Update & Destroy Individual Element: [http://127.0.0.1:8000/api/watchmate/stream/<int:streamplatform_id>/ ](http://127.0.0.1:8000/api/watchmate/stream/<int:streamplatform_id>/)
+- Access, Update & Destroy Individual Element: [http://127.0.0.1:8000/api/watchmate/stream/**_int:streamplatform_id_**/ ](http://127.0.0.1:8000/api/watchmate/stream/int:streamplatform_id/)
 
 **4. Watch List**
 
 - Create & Access List: [http://127.0.0.1:8000/api/watchmate/](http://127.0.0.1:8000/api/watchmate/)
-- Access, Update & Destroy Individual Element: [http://127.0.0.1:8000/api/watchmate/<int:movie_id>/](http://127.0.0.1:8000/api/watchmate/<int:movie_id>/)
+- Access, Update & Destroy Individual Element: [http://127.0.0.1:8000/api/watchmate/**_int:movie_id_**/](http://127.0.0.1:8000/api/watchmate/int:movie_id/)
 
 **5. Reviews**
 
